@@ -131,46 +131,37 @@
        float xVel,yVel,nSize;
        float x,y;
 
-        public Neutron(){
-          x=random(585,615);                                                                            //horizontal middle of screen
-          y=random(385,415);
-          xVel=random(-5,5);
-          yVel=random(-5,5);
-          while(xVel==0){
-            xVel=random(-5,5);  
-          }
-          while(yVel==0){
-            yVel=random(-5,5);
-          }
-          nSize=10;
-          fill(100,100,100);
-          ellipse(x,y,nSize,nSize); 
-        }
-
-        public void update(){
-         x+=xVel;
-         y+=yVel;
+       public Neutron(){
+         x=random(585,615);                                                                            //horizontal middle of screen
+         y=random(385,415);
+         xVel=random(-5,5);
+         yVel=random(-5,5);
+         while(xVel==0){
+           xVel=random(-5,5);  
+         }
+         while(yVel==0){
+           yVel=random(-5,5);
+         }
+         nSize=10;
          fill(100,100,100);
-         ellipse(x,y,nSize, nSize);
-        }
+         ellipse(x,y,nSize,nSize); 
+       }
 
+       public void update(){
+        x+=xVel;
+        y+=yVel;
+        fill(100,100,100);
+        ellipse(x,y,nSize, nSize);
+       }
 
-        public void barrierCheckNeutron(int r){
-          if(sqrt(pow((x-width/2),2) + pow((y-height/2),2))>=r){                //distance formula is less than the sum of two radii, means there is a collison
+       public void barrierCheckNeutron(int r){
+         if(sqrt(pow((x-width/2),2) + pow((y-height/2),2))>=r){                //distance formula is less than the sum of two radii, means there is a collison
+            xVel*=-1;
+            yVel*=-1;
+          }
+       }
 
-             xVel*=-1;
-             yVel*=-1;
-
-
-           }
-
-
-
-
-
-        }
-
-      }
+     }
 
 
       public class Proton{
@@ -204,17 +195,9 @@
 
         public void barrierCheckProton(int r){
           if(sqrt(pow((x-width/2),2) + pow((y-height/2),2))>=r){                //distance formula is less than the sum of two radii, means there is a collison
-
              xVel*=-1;
              yVel*=-1;
-
-
            }
-
-
-
-
-
         }
 
       }
